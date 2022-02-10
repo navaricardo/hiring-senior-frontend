@@ -15,6 +15,7 @@ We handle a lot of currency conversions and money transactions on a day-to-day b
 No need to code anything for the backend, you can use any client-side storage to store the info. This is not a design role, so there are no specific design requirements, feel free to own it. Although this is not a design position, it is very important that you can translate design files (PSD, Figma, etc.) into code (HTML/CSS). 
 
 #### Extra credit features
+Optional, only if you have some extra time.
 - [ ] Create at least one test for your code.
 - [ ] Search or filtering on the view invoices screen
 - [ ] Good UX.
