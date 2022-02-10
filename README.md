@@ -16,6 +16,7 @@ No need to code anything for the backend, you can use any client-side storage to
 
 #### Extra credit features
 - [ ] Create at least one test for your code.
+- [ ] Search or filtering on the view invoices screen
 - [ ] Good UX.
 - [ ] Highly reusable components.
 - [ ] Responsive layout and design is a bonus. Please code that only if you have extra time.
