@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import CreateInvoice from "./pages/CreateInvoice";
+import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 
 const App = () => (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/create-invoice" element={<CreateInvoice />} />
+    <Route path="/admin" element={<Admin />} />
   </Routes>
 );
 
