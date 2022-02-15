@@ -1,12 +1,38 @@
-import { FunctionComponent } from "react";
+import { ChangeEvent, MouseEvent } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { invoiceListState, invoiceState } from "../store";
 
-interface CreateInvoiceProps {}
+// Types and Interfaces
+type AddInvoiceT = (event: MouseEvent<HTMLButtonElement>) => void;
+type OnChangeTitleT = (event: ChangeEvent<HTMLInputElement>) => void;
 
-const CreateInvoice: FunctionComponent<CreateInvoiceProps> = () => {
+// Component that creates invoices
+const CreateInvoice = (): JSX.Element => {
+  // Recoil state manager
+  const setInvoiceList = useSetRecoilState(invoiceListState);
+  const [invoice, setInvoice] = useRecoilState(invoiceState);
+
+  // Component actions
+  const addInvoice: AddInvoiceT = (event) => {
+    event.preventDefault();
+
+    if (!invoice.title) return;
+
+    setInvoiceList((prevInvoiceList) => [...prevInvoiceList, { ...invoice }]);
+  };
+
+  const onChangeTitle: OnChangeTitleT = ({ target: { value: title } }) =>
+    setInvoice((prevInvoice) => ({
+      ...prevInvoice,
+      title,
+    }));
+
+  // Return a valid JSX.Element
   return (
-    <>
-      <button>ADD</button>
-    </>
+    <form className="">
+      <input type="text" value={invoice.title} onChange={onChangeTitle} />
+      <button onClick={addInvoice}>ADD</button>
+    </form>
   );
 };
 

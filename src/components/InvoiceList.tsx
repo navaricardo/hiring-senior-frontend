@@ -1,20 +1,20 @@
 import { FunctionComponent } from "react";
-import { _INVOICES } from "../BACKEND";
-import { IInvoice } from "../interfaces/invoice";
+import { useRecoilValue } from "recoil";
+import { invoiceListState } from "../store";
 
 interface InvoiceListProps {}
 
 const InvoiceList: FunctionComponent<InvoiceListProps> = () => {
-  const invoices: Array<IInvoice> = _INVOICES;
+  const invoiceList = useRecoilValue(invoiceListState);
 
   return (
     <ul>
-      {invoices.map((invoice) => (
-        <li>
+      {invoiceList.map((invoice, index) => (
+        <li key={index}>
           {invoice.title}
           <ul className="pl-2">
-            {invoice.items?.map((invoiceItem) => (
-              <li>{invoiceItem.amount}</li>
+            {invoice.items?.map((invoiceItem, index) => (
+              <li key={index}>{invoiceItem.amount}</li>
             ))}
           </ul>
         </li>
