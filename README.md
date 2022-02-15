@@ -1,21 +1,26 @@
 # Via Frontend
-This challenge is to evaluate your frontend and software engineering skills. 
+
+This challenge is to evaluate your frontend and software engineering skills.
 Clean code, good architecture, design patterns, comments, etc. Imagine that this code will go into production.
-This assignment should take you no more than 4 hours to complete, but any extra polish or features won’t go unnoticed. 
-You have a week to finish the challenge, but please let us know if you need more time. 
+This assignment should take you no more than 4 hours to complete, but any extra polish or features won’t go unnoticed.
+You have a week to finish the challenge, but please let us know if you need more time.
 
 ## The assignment
+
 We would like you to create an invoicing app. The features it should include:
+
 - [ ] View created invoices.
 - [ ] Create a new invoice.
 - [ ] Add line items to the invoices. Line items must include description, amount and currency.
 - [ ] Invoice must show total amount in USD. Connect with the exchange rate API of your preference.
 
-We handle a lot of currency conversions and money transactions on a day-to-day basis, so we will pay close attention to how you handle this. 
-No need to code anything for the backend, you can use any client-side storage to store the info. This is not a design role, so there are no specific design requirements, feel free to own it. Although this is not a design position, it is very important that you can translate design files (PSD, Figma, etc.) into code (HTML/CSS). 
+We handle a lot of currency conversions and money transactions on a day-to-day basis, so we will pay close attention to how you handle this.
+No need to code anything for the backend, you can use any client-side storage to store the info. This is not a design role, so there are no specific design requirements, feel free to own it. Although this is not a design position, it is very important that you can translate design files (PSD, Figma, etc.) into code (HTML/CSS).
 
 #### Extra credit features
+
 Optional, only if you have some extra time.
+
 - [ ] Create at least one test for your code.
 - [ ] Search or filtering on the view invoices screen
 - [ ] Good UX.
@@ -23,7 +28,9 @@ Optional, only if you have some extra time.
 - [ ] Responsive layout and design is a bonus. Please code that only if you have extra time.
 
 ## Requirements
+
 Use the following tools to accomplish this task:
+
 - Vue / React.
 - Use a state management library.
 - It’s okay to use create-react-app or similar tools.
