@@ -1,7 +1,12 @@
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import CreateInvoice from "./pages/CreateInvoice";
+import Home from "./pages/Home";
 
-function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
-}
+const App = () => (
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/create-invoice" element={<CreateInvoice />} />
+  </Routes>
+);
 
 export default App;
