@@ -9,13 +9,19 @@ const InvoiceList: FunctionComponent<InvoiceListProps> = () => {
 
   return (
     <ul>
-      {invoiceList.map((invoice, index) => (
-        <li key={index}>
+      {invoiceList.map((invoice, invoiceIndex) => (
+        <li key={invoiceIndex}>
           {invoice.title}
           <ul className="pl-2">
-            {invoice.items?.map((invoiceItem, index) => (
-              <li key={index}>{invoiceItem.amount}</li>
-            ))}
+            {invoice.items?.map(
+              ({ amount, currency, description }, itemIndex) => (
+                <>
+                  <li key={itemIndex + description}>{description}</li>
+                  <li key={itemIndex + amount}>{amount}</li>
+                  <li key={itemIndex + currency}>{currency}</li>
+                </>
+              )
+            )}
           </ul>
         </li>
       ))}

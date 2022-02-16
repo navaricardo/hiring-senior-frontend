@@ -1,8 +1,16 @@
 import { atom } from "recoil";
-import { _INVOICES } from "../BACKEND";
-import { IInvoice } from "../interfaces/invoice";
+import { IInvoice, IInvoiceItem } from "../interfaces";
 
 // Recoil states
+const invoiceItemState = atom<IInvoiceItem>({
+  key: "invoiceItemState",
+  default: {
+    description: "",
+    amount: "",
+    currency: "",
+  },
+});
+
 const invoiceState = atom<IInvoice>({
   key: "invoiceState",
   default: {
@@ -13,7 +21,17 @@ const invoiceState = atom<IInvoice>({
 
 const invoiceListState = atom<Array<IInvoice>>({
   key: "invoiceListstate",
-  default: _INVOICES as Array<IInvoice>,
+  default: [],
 });
 
-export { invoiceState, invoiceListState };
+const invoiceItemsListState = atom<Array<IInvoiceItem>>({
+  key: "invoiceItemsListState",
+  default: [],
+});
+
+export {
+  invoiceItemState,
+  invoiceState,
+  invoiceListState,
+  invoiceItemsListState,
+};
