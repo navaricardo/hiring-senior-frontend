@@ -15,15 +15,15 @@ const FormInput: FunctionComponent<FormInputProps> = ({
   ...props
 }) => {
   return (
-    <div className="field">
+    <>
       {label && <label className="label">{label}</label>}
       <input
         {...register}
         className={`input ${errors && "is-danger"}`}
         {...props}
       />
-      {errors && <p className="help is-danger">Field is required</p>}
-    </div>
+      {errors && <span className="help is-danger">Field is required</span>}
+    </>
   );
 };
 

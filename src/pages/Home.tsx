@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
-import CreateInvoice from "../components/CreateInvoice/CreateInvoice";
-import InvoiceList from "../components/InvoiceList";
+import CreateInvoiceForm from "../components/CreateInvoice/CreateInvoiceForm";
+import InvoiceList from "../components/InvoiceList/InvoiceList";
 
 interface HomeProps {}
 
@@ -9,14 +9,13 @@ const Home: FunctionComponent<HomeProps> = () => {
     <main>
       <div className="max-w-full mx-auto p-16">
         <div className="flex gap-8 sm:px-0">
-          <div className="border-2 border-dashed border-gray-300 w-1/2">
+          <div className="border-2 border-dashed border-gray-300 p-8 w-1/2">
             <InvoiceList />
           </div>
-          <div className="border-2 border-dashed border-gray-300 w-1/2">
-            <CreateInvoice />
+          <div className="border-2 border-dashed border-gray-300 p-8 w-1/2">
+            <CreateInvoiceForm />
           </div>
         </div>
-        {/* /End replace */}
       </div>
     </main>
   );
