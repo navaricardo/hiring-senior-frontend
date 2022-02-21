@@ -6,14 +6,14 @@ interface HomeProps {}
 
 const Home: FunctionComponent<HomeProps> = () => {
   return (
-    <main>
-      <div className="max-w-full mx-auto p-16">
-        <div className="flex gap-8 sm:px-0">
-          <div className="border-2 border-dashed border-gray-300 p-8 w-1/2">
-            <InvoiceList />
-          </div>
-          <div className="border-2 border-dashed border-gray-300 p-8 w-1/2">
+    <main className="section">
+      <div className="container is-fluid">
+        <div className="columns">
+          <div className="column">
             <CreateInvoiceForm />
+          </div>
+          <div className="column">
+            <InvoiceList />
           </div>
         </div>
       </div>
