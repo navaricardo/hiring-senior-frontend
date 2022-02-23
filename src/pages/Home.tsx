@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
-import CreateInvoiceForm from "../components/CreateInvoice/CreateInvoiceForm";
+import InvoiceForm from "../components/CreateInvoice/InvoiceForm";
+import InvoiceTotal from "../components/CreateInvoice/InvoiceTotal";
 import InvoiceList from "../components/InvoiceList/InvoiceList";
 
 interface HomeProps {}
@@ -10,7 +11,8 @@ const Home: FunctionComponent<HomeProps> = () => {
       <div className="container is-fluid">
         <div className="columns">
           <div className="column">
-            <CreateInvoiceForm />
+            <InvoiceForm />
+            <InvoiceTotal />
           </div>
           <div className="column">
             <InvoiceList />

@@ -15,3 +15,14 @@ export interface IInvoice {
   total: number;
   items: Array<IInvoiceItem>;
 }
+
+export interface IFormInvoiceItem {
+  description: string;
+  amount: string;
+  currency: string;
+}
+
+export interface IFormInvoice {
+  title: string;
+  items: Array<IFormInvoiceItem>;
+}

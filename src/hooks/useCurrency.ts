@@ -38,7 +38,7 @@ const useCurrencies = () => {
       setCurrencies(orderedCurrencies);
       setLoading(false);
     }
-  }, [currencyData, error]);
+  }, [currencyData, error, data?.data]);
 
   return { currencies, error, loading };
 };
