@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
+import { useRecoilValue } from "recoil";
 import { InvoiceItemProps } from "../../entities";
-import useCurrencies from "../../hooks/useCurrency";
+import { currencyListState } from "../../store";
 import FormInput from "../shared/FormInput";
 import FormSelect, { SelectOption } from "../shared/FormSelect";
 
@@ -11,7 +12,7 @@ const InvoiceItem: FunctionComponent<InvoiceItemProps> = ({
   remove,
 }) => {
   // Hooks
-  const { currencies } = useCurrencies();
+  const currencies = useRecoilValue(currencyListState);
 
   // Initialization
   const error = errors.items?.[index];

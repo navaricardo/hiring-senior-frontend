@@ -57,6 +57,7 @@ const InvoiceForm = (): JSX.Element => {
       if (exchangeItemsAmount) setInvoiceTotal(sumNumbers(exchangeItemsAmount));
       return () => subscription.unsubscribe();
     });
+
     // we dont need to track setInvoiceTotal
   }, [watch]); // eslint-disable-line react-hooks/exhaustive-deps
 

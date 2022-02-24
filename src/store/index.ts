@@ -1,5 +1,5 @@
 import { atom, DefaultValue } from "recoil";
-import { AtomEffect, IInvoice } from "../entities";
+import { AtomEffect, ICurrency, IInvoice } from "../entities";
 
 // effects
 const localStorageEffect: AtomEffect =
@@ -21,6 +21,11 @@ const localStorageEffect: AtomEffect =
   };
 
 // Recoil states
+const currencyListState = atom<Array<ICurrency>>({
+  key: "currencyListState",
+  default: [],
+});
+
 const invoiceListState = atom<Array<IInvoice>>({
   key: "invoiceListstate",
   default: [],
@@ -32,4 +37,4 @@ const invoiceTotalState = atom<number>({
   default: 0,
 });
 
-export { invoiceListState, invoiceTotalState };
+export { currencyListState, invoiceListState, invoiceTotalState };
