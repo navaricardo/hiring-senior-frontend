@@ -3,7 +3,7 @@ import { RecoilRoot } from "recoil";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 
-const App = () => (
+const App = (): JSX.Element => (
   <RecoilRoot>
     <Routes>
       <Route path="/" element={<Home />} />

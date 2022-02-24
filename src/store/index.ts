@@ -1,8 +1,8 @@
 import { atom, DefaultValue } from "recoil";
-import { AtomEffect, ICurrency, IInvoice } from "../entities";
+import { TAtomEffect, ICurrency, IInvoice } from "../entities";
 
 // effects
-const localStorageEffect: AtomEffect =
+const localStorageEffect: TAtomEffect =
   (key: string) =>
   ({ setSelf, onSet }) => {
     const savedValue = localStorage.getItem(key);

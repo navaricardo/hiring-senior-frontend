@@ -40,15 +40,3 @@ export interface IFormInvoice {
   title: string;
   items: Array<IFormInvoiceItem>;
 }
-
-export interface InvoiceItemProps {
-  errors: InvoiceError;
-  index: number;
-  register: UseFormRegister<IFormInvoice>;
-  remove: UseFieldArrayRemove;
-}
-
-export interface InvoiceItemsTableProps {
-  items: Array<IInvoiceItem>;
-  total: number;
-}

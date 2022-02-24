@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import InvoiceForm from "../components/CreateInvoice/InvoiceForm";
 import InvoiceTotal from "../components/CreateInvoice/InvoiceTotal";
@@ -31,6 +32,9 @@ const Home = (): JSX.Element => {
           </div>
           <div className="column">
             <InvoiceList />
+            <div className="is-pulled-right">
+              <Link to="/admin">go to Admin</Link>
+            </div>
           </div>
         </div>
       </div>

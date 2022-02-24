@@ -68,10 +68,15 @@ const InvoiceForm = (): JSX.Element => {
     >
       <div className="field mb-6">
         <FormInput
-          errors={errors["title"]}
+          error={errors["title"]?.message}
           name={"title"}
           label={"Invoice Title"}
-          register={register("title" as const, { required: true })}
+          register={register("title" as const, {
+            required: {
+              value: true,
+              message: "Required",
+            },
+          })}
         />
       </div>
       {fields.map(({ id }, index) => (
@@ -91,7 +96,7 @@ const InvoiceForm = (): JSX.Element => {
         Add Item
       </button>
       <button type="submit" className="button is-primary">
-        Save
+        Save Invoice
       </button>
     </form>
   );

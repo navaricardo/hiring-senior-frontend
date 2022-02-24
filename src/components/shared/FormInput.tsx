@@ -1,14 +1,15 @@
 import { FunctionComponent, InputHTMLAttributes } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  errors: any;
+  error?: string;
   label?: string;
   name: string;
-  register: any;
+  register: UseFormRegisterReturn;
 }
 
 const FormInput: FunctionComponent<FormInputProps> = ({
-  errors,
+  error,
   name,
   label,
   register,
@@ -19,9 +20,9 @@ const FormInput: FunctionComponent<FormInputProps> = ({
     <input
       {...register}
       {...props}
-      className={`input ${errors && "is-danger"}`}
+      className={`input ${error && "is-danger"}`}
     />
-    {errors && <span className="help is-danger">Field is required</span>}
+    {error && <span className="help is-danger">{error}</span>}
   </>
 );
 

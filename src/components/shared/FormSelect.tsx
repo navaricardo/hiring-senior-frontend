@@ -1,17 +1,18 @@
 import { FunctionComponent, InputHTMLAttributes } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 export type SelectOption = { label: string; value: string | number };
 
 interface FormSelectProps extends InputHTMLAttributes<HTMLSelectElement> {
-  errors: any;
+  error?: string;
   label?: string;
   name: string;
-  register: any;
   options: Array<SelectOption>;
+  register: UseFormRegisterReturn;
 }
 
 const FormSelect: FunctionComponent<FormSelectProps> = ({
-  errors,
+  error,
   name,
   label,
   register,
@@ -29,7 +30,7 @@ const FormSelect: FunctionComponent<FormSelectProps> = ({
         <select
           {...register}
           {...props}
-          className={`input ${errors && "is-danger"}`}
+          className={`input ${error && "is-danger"}`}
         >
           {selectOptions.map(({ label, value }) => (
             <option key={value} value={value}>
@@ -38,7 +39,7 @@ const FormSelect: FunctionComponent<FormSelectProps> = ({
           ))}
         </select>
       </span>
-      {errors && <span className="help is-danger">Field is required</span>}
+      {error && <span className="help is-danger">{error}</span>}
     </div>
   );
 };

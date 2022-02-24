@@ -1,11 +1,19 @@
 import { FunctionComponent } from "react";
+import { UseFieldArrayRemove, UseFormRegister } from "react-hook-form";
 import { useRecoilValue } from "recoil";
-import { InvoiceItemProps } from "../../entities";
+import { IFormInvoice, InvoiceError } from "../../entities";
 import { currencyListState } from "../../store";
 import FormInput from "../shared/FormInput";
 import FormSelect, { SelectOption } from "../shared/FormSelect";
 
-const InvoiceItem: FunctionComponent<InvoiceItemProps> = ({
+interface IInvoiceItemProps {
+  errors: InvoiceError;
+  index: number;
+  register: UseFormRegister<IFormInvoice>;
+  remove: UseFieldArrayRemove;
+}
+
+const InvoiceItem: FunctionComponent<IInvoiceItemProps> = ({
   errors,
   index,
   register,
@@ -33,11 +41,14 @@ const InvoiceItem: FunctionComponent<InvoiceItemProps> = ({
         <div className="field">
           <FormInput
             key={`description${index}`}
-            errors={Boolean(error?.description)}
+            error={error?.description?.message}
             name={"description"}
             label={"Description"}
             register={register(`items.${index}.description` as const, {
-              required: true,
+              required: {
+                value: true,
+                message: "Required",
+              },
             })}
           />
         </div>
@@ -46,12 +57,19 @@ const InvoiceItem: FunctionComponent<InvoiceItemProps> = ({
         <div className="field has-addons">
           <div className="control">
             <FormInput
-              errors={Boolean(error?.amount)}
+              error={error?.amount?.message}
               key={`amount${index}`}
               label={"Amount"}
               name={"amount"}
               register={register(`items.${index}.amount` as const, {
-                required: true,
+                required: {
+                  value: true,
+                  message: "Required",
+                },
+                pattern: {
+                  value: /[+-]?\d+(?:[.]\d+)?/,
+                  message: "Please enter a number",
+                },
               })}
             />
           </div>
@@ -59,11 +77,14 @@ const InvoiceItem: FunctionComponent<InvoiceItemProps> = ({
           <div className="control mt-5">
             <div className="mt-2">
               <FormSelect
-                errors={Boolean(error?.currency)}
+                error={error?.currency?.message}
                 key={`currency${index}`}
                 name={"currency"}
                 register={register(`items.${index}.currency` as const, {
-                  required: true,
+                  required: {
+                    value: true,
+                    message: "Required",
+                  },
                 })}
                 options={selectOptions}
               />
