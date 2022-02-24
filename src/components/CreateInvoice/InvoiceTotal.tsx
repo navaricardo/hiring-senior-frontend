@@ -7,13 +7,13 @@ const InvoiceTotal = (): JSX.Element => {
 
   return (
     <div className="box is-flex is-justify-content-space-between has-text-black">
-      <span className="is-size-3">TOTAL:</span>
-      <span className="is-size-3 has-text-primary">
-        {formatAsCurrency(total)}{" "}
+      <strong className="is-size-3">TOTAL:</strong>
+      <strong className="is-size-3 has-text-primary">
+        {formatAsCurrency(total)}
         <span className="is-size-5 has-text-black has-text-weight-light">
           USD
         </span>
-      </span>
+      </strong>
     </div>
   );
 };

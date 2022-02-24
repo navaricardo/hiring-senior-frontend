@@ -23,10 +23,16 @@ const InvoiceItemsTable: FunctionComponent<InvoiceItemsTableProps> = ({
       <tfoot>
         <tr>
           <th>
-            <strong>TOTAL</strong>
+            <strong className="is-size-5">TOTAL</strong>
           </th>
-          <td className="has-text-primary">{formatAsCurrency(total)}</td>
-          <td>USD</td>
+          <td>
+            <strong className="is-size-5 has-text-primary">
+              {formatAsCurrency(total)}
+            </strong>
+          </td>
+          <td>
+            <strong className="is-size-5">USD</strong>
+          </td>
         </tr>
       </tfoot>
       <tbody>
