@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { formatAsCurrency } from "../../helpers";
 import { IInvoiceItem } from "../../interfaces";
 
 interface InvoiceItemsTableProps {
@@ -24,7 +25,7 @@ const InvoiceItemsTable: FunctionComponent<InvoiceItemsTableProps> = ({
           <th>
             <strong>TOTAL</strong>
           </th>
-          <td>{total}</td>
+          <td>{formatAsCurrency(total)}</td>
           <td>USD</td>
         </tr>
       </tfoot>
@@ -32,7 +33,7 @@ const InvoiceItemsTable: FunctionComponent<InvoiceItemsTableProps> = ({
         {items.map((item) => (
           <tr>
             <td>{item.description}</td>
-            <td>{item.amount}</td>
+            <td>{formatAsCurrency(item.amount)}</td>
             <td>{item.currency.name}</td>
           </tr>
         ))}

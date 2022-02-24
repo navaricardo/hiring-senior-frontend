@@ -4,6 +4,6 @@ import currency from "currency.js";
 export const sumNumbers = (values: Array<number>) =>
   values.reduce((previous, current) => (previous += current));
 
-// Parse currency decimals
-export const formatAsCurrency = (value: string | number): number =>
-  currency(value).value;
+// Parse value as string with currency decimals
+export const formatAsCurrency = (value: string | number): string =>
+  currency(value).toString();
