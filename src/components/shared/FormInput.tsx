@@ -5,7 +5,7 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   label?: string;
   name: string;
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
 }
 
 const FormInput: FunctionComponent<FormInputProps> = ({
