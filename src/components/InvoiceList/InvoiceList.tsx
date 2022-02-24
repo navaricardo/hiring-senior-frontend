@@ -3,7 +3,9 @@ import { invoiceListState } from "../../store";
 import InvoiceItemsTable from "./InvoiceItemsTable";
 
 const InvoiceList = (): JSX.Element => {
+  // Hooks
   const invoiceList = useRecoilValue(invoiceListState);
+
   return (
     <ul>
       {invoiceList.map((invoice, invoiceIndex) => (

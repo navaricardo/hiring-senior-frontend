@@ -1,40 +1,20 @@
 import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { sumNumbers } from "../../helpers";
-import { ICurrency, IFormInvoice, IInvoice } from "../../interfaces";
+import {
+  DEFAULT_INVOICE_ITEM,
+  INVOICE_FORM_DEFAULT_VALUES,
+} from "../../constants";
+import { IFormInvoice } from "../../entities";
+import { createInvoice, sumNumbers } from "../../helpers";
 import { invoiceListState, invoiceTotalState } from "../../store";
 import FormInput from "../shared/FormInput";
 import InvoiceItem from "./InvoiceItem";
 
-const createInvoice = (values: IFormInvoice, total: number): IInvoice => {
-  const items = values.items.map((item) => {
-    const currencyObject = JSON.parse(item.currency);
-    const currency: ICurrency = {
-      name: currencyObject.label,
-      value: currencyObject.value,
-    };
-    return {
-      ...item,
-      amount: parseFloat(item.amount),
-      currency: { ...currency },
-    };
-  });
-  return {
-    ...values,
-    total,
-    items,
-  } as IInvoice;
-};
-
-const defaultInvoiceItem = { description: "", amount: "", currency: "" };
-
 const InvoiceForm = (): JSX.Element => {
-  // Global State
+  // Hooks
   const setInvoiceList = useSetRecoilState(invoiceListState);
   const [invoiceTotal, setInvoiceTotal] = useRecoilState(invoiceTotalState);
-
-  // Form Hooks
   const {
     control,
     handleSubmit,
@@ -43,36 +23,20 @@ const InvoiceForm = (): JSX.Element => {
     watch,
     formState: { errors },
   } = useForm<IFormInvoice>({
-    defaultValues: {
-      title: "",
-      items: [
-        {
-          amount: "",
-          description: "",
-          currency: "",
-        },
-      ],
-    },
+    defaultValues: INVOICE_FORM_DEFAULT_VALUES,
     shouldUnregister: true,
   });
-
   const { fields, append, remove } = useFieldArray({
     control,
     name: "items",
   });
 
-  // Component Actions
-  const addInvoiceItem = () => {
-    append(defaultInvoiceItem as any);
-  };
-
-  const removeInvoiceItem = (index: number) => {
-    remove(index);
-  };
+  // Actions
+  const addInvoiceItem = () => append(DEFAULT_INVOICE_ITEM);
 
   const saveInvoice = (values: IFormInvoice) => {
     const invoice = createInvoice(values, invoiceTotal);
-    setInvoiceList((oldInvoiceList) => [...oldInvoiceList, { ...invoice }]);
+    setInvoiceList((oldInvoiceList) => [{ ...invoice }, ...oldInvoiceList]);
   };
 
   const onSubmit = (values: IFormInvoice) => {
@@ -93,7 +57,8 @@ const InvoiceForm = (): JSX.Element => {
       if (exchangeItemsAmount) setInvoiceTotal(sumNumbers(exchangeItemsAmount));
       return () => subscription.unsubscribe();
     });
-  }, [watch]);
+    // we dont need to track setInvoiceTotal
+  }, [watch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <form
@@ -113,7 +78,7 @@ const InvoiceForm = (): JSX.Element => {
           errors={errors}
           index={index}
           register={register}
-          remove={removeInvoiceItem}
+          remove={remove}
           key={id}
         />
       ))}

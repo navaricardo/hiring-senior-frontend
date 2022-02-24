@@ -13,18 +13,16 @@ const FormInput: FunctionComponent<FormInputProps> = ({
   label,
   register,
   ...props
-}) => {
-  return (
-    <>
-      {label && <label className="label">{label}</label>}
-      <input
-        {...register}
-        className={`input ${errors && "is-danger"}`}
-        {...props}
-      />
-      {errors && <span className="help is-danger">Field is required</span>}
-    </>
-  );
-};
+}) => (
+  <>
+    {label && <label className="label">{label}</label>}
+    <input
+      {...register}
+      {...props}
+      className={`input ${errors && "is-danger"}`}
+    />
+    {errors && <span className="help is-danger">Field is required</span>}
+  </>
+);
 
 export default FormInput;

@@ -18,16 +18,18 @@ const FormSelect: FunctionComponent<FormSelectProps> = ({
   options,
   ...props
 }) => {
+  // actions
   const defaultOption = { label: "", value: "" };
   const selectOptions = [defaultOption, ...options];
+
   return (
-    <>
+    <div>
       {label && <label className="label">{label}</label>}
       <span className="select">
         <select
           {...register}
-          className={`input ${errors && "is-danger"}`}
           {...props}
+          className={`input ${errors && "is-danger"}`}
         >
           {selectOptions.map(({ label, value }) => (
             <option key={value} value={value}>
@@ -37,7 +39,7 @@ const FormSelect: FunctionComponent<FormSelectProps> = ({
         </select>
       </span>
       {errors && <span className="help is-danger">Field is required</span>}
-    </>
+    </div>
   );
 };
 

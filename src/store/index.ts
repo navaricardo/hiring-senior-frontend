@@ -1,11 +1,12 @@
-import { atom, AtomEffect, DefaultValue } from "recoil";
-import { IInvoice } from "../interfaces";
+import { atom, DefaultValue } from "recoil";
+import { AtomEffect, IInvoice } from "../entities";
 
 // effects
-const localStorageEffect: <T>(key: string) => AtomEffect<T> =
+const localStorageEffect: AtomEffect =
   (key: string) =>
   ({ setSelf, onSet }) => {
     const savedValue = localStorage.getItem(key);
+
     if (savedValue != null) {
       setSelf(JSON.parse(savedValue));
     }

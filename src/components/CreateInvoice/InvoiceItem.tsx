@@ -1,24 +1,8 @@
 import { FunctionComponent } from "react";
-import { FieldError } from "react-hook-form";
+import { InvoiceItemProps } from "../../entities";
 import useCurrencies from "../../hooks/useCurrency";
 import FormInput from "../shared/FormInput";
 import FormSelect, { SelectOption } from "../shared/FormSelect";
-
-interface InvoiceItemProps {
-  errors: {
-    title?: FieldError | undefined;
-    items?:
-      | {
-          description?: FieldError | undefined;
-          amount?: FieldError | undefined;
-          currency?: FieldError | undefined;
-        }[]
-      | undefined;
-  };
-  index: number;
-  register: any;
-  remove: any;
-}
 
 const InvoiceItem: FunctionComponent<InvoiceItemProps> = ({
   errors,
@@ -26,9 +10,10 @@ const InvoiceItem: FunctionComponent<InvoiceItemProps> = ({
   register,
   remove,
 }) => {
+  // Hooks
   const { currencies } = useCurrencies();
 
-  const removeItemByIndex = () => remove(index);
+  // Initialization
   const error = errors.items?.[index];
   const isFirstItem = index === 0;
   const selectOptions: Array<SelectOption> = currencies.map(
@@ -37,6 +22,9 @@ const InvoiceItem: FunctionComponent<InvoiceItemProps> = ({
       value: JSON.stringify({ label, value }),
     })
   );
+
+  // Actions
+  const removeItemByIndex = () => remove(index);
 
   return (
     <div className="columns">
@@ -53,9 +41,9 @@ const InvoiceItem: FunctionComponent<InvoiceItemProps> = ({
           />
         </div>
       </div>
-      <div className="column flex">
+      <div className="column is-flex">
         <div className="field has-addons">
-          <p className="control">
+          <div className="control">
             <FormInput
               errors={Boolean(error?.amount)}
               key={`amount${index}`}
@@ -65,28 +53,27 @@ const InvoiceItem: FunctionComponent<InvoiceItemProps> = ({
                 required: true,
               })}
             />
-          </p>
-          <p className="control">
-            <FormSelect
-              errors={Boolean(error?.currency)}
-              key={`currency${index}`}
-              label={"Currency"}
-              name={"currency"}
-              register={register(`items.${index}.currency` as const, {
-                required: true,
-              })}
-              options={selectOptions}
-            />
-          </p>
+          </div>
+          {/* Hard margin to fix issue with label */}
+          <div className="control mt-5">
+            <div className="mt-2">
+              <FormSelect
+                errors={Boolean(error?.currency)}
+                key={`currency${index}`}
+                name={"currency"}
+                register={register(`items.${index}.currency` as const, {
+                  required: true,
+                })}
+                options={selectOptions}
+              />
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="column is-narrow">
-        <div className="field">
-          <label className="label">Remove</label>
+        <div className="field ml-5 mt-5">
           <button
             type="button"
             onClick={removeItemByIndex}
-            className="button is-danger"
+            className="button is-danger mt-2"
             disabled={isFirstItem}
           >
             X

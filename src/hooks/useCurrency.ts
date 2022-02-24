@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import { ICurrency } from "../interfaces";
+import { API_URL } from "../constants";
+import { ICurrency } from "../entities";
 import useFetch from "./useFetch";
-
-const API_URL =
-  "https://freecurrencyapi.net/api/v2/latest?apikey=a7719a00-9206-11ec-8132-2fe9ee2125a4";
 
 type APICurrencies = { [s: string]: number };
 
 const useCurrencies = () => {
   const { data, error } = useFetch<APICurrencies>(API_URL);
-
   const [currencies, setCurrencies] = useState<Array<ICurrency>>([]);
   const [loading, setLoading] = useState<Boolean>(true);
   const currencyData = data?.data;

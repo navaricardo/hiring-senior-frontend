@@ -1,11 +1,13 @@
-import { FunctionComponent } from "react";
+import DeleteStorageButton from "../components/shared/DeleteStorageButton";
 
-interface AdminProps {}
-
-const Admin: FunctionComponent<AdminProps> = () => {
+const Admin = (): JSX.Element => {
   return (
     <main className="section">
-      <div className="container is-fluid">ADMIN</div>
+      <div className="container is-fluid">
+        <div className="box">
+          <DeleteStorageButton />
+        </div>
+      </div>
     </main>
   );
 };
