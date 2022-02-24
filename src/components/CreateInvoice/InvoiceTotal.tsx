@@ -6,8 +6,14 @@ const InvoiceTotal = (): JSX.Element => {
   const total = useRecoilValue(invoiceTotalState);
 
   return (
-    <div className="box">
-      <h3 className="title is-3 my-auto">{formatAsCurrency(total)}USD</h3>
+    <div className="box is-flex is-justify-content-space-between has-text-black">
+      <span className="is-size-3">TOTAL:</span>
+      <span className="is-size-3 has-text-primary">
+        {formatAsCurrency(total)}{" "}
+        <span className="is-size-5 has-text-black has-text-weight-light">
+          USD
+        </span>
+      </span>
     </div>
   );
 };

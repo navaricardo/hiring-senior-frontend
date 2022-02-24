@@ -100,7 +100,7 @@ const InvoiceForm = (): JSX.Element => {
       className="box"
       onSubmit={handleSubmit((data: IFormInvoice) => onSubmit(data))}
     >
-      <div className="field">
+      <div className="field mb-6">
         <FormInput
           errors={errors["title"]}
           name={"title"}
@@ -117,20 +117,16 @@ const InvoiceForm = (): JSX.Element => {
           key={id}
         />
       ))}
-      <div className="flex justify-between mt-4">
-        <div className="flex gap-x-4">
-          <button
-            type="button"
-            onClick={addInvoiceItem}
-            className="button is-link"
-          >
-            Add Item
-          </button>
-          <button type="submit" className="button is-primary">
-            Save
-          </button>
-        </div>
-      </div>
+      <button
+        type="button"
+        onClick={addInvoiceItem}
+        className="button is-link mr-4"
+      >
+        Add Item
+      </button>
+      <button type="submit" className="button is-primary">
+        Save
+      </button>
     </form>
   );
 };

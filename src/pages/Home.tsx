@@ -3,9 +3,7 @@ import InvoiceForm from "../components/CreateInvoice/InvoiceForm";
 import InvoiceTotal from "../components/CreateInvoice/InvoiceTotal";
 import InvoiceList from "../components/InvoiceList/InvoiceList";
 
-interface HomeProps {}
-
-const Home: FunctionComponent<HomeProps> = () => {
+const Home = (): JSX.Element => {
   return (
     <main className="section">
       <div className="container is-fluid">

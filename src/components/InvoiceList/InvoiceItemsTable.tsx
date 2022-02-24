@@ -25,7 +25,7 @@ const InvoiceItemsTable: FunctionComponent<InvoiceItemsTableProps> = ({
           <th>
             <strong>TOTAL</strong>
           </th>
-          <td>{formatAsCurrency(total)}</td>
+          <td className="has-text-primary">{formatAsCurrency(total)}</td>
           <td>USD</td>
         </tr>
       </tfoot>

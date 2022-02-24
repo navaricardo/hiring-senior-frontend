@@ -8,7 +8,7 @@ const InvoiceList = (): JSX.Element => {
     <ul>
       {invoiceList.map((invoice, invoiceIndex) => (
         <li key={invoiceIndex} className="box">
-          <h3 className="title is-3">{invoice.title}</h3>
+          <h5 className="title is-5 has-text-info">{invoice.title}</h5>
           <InvoiceItemsTable items={invoice.items} total={invoice.total} />
         </li>
       ))}

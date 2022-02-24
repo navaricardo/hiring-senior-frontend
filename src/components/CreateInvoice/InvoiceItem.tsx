@@ -39,56 +39,60 @@ const InvoiceItem: FunctionComponent<InvoiceItemProps> = ({
   );
 
   return (
-    <div className="flex gap-x-4">
-      <div className="field w-1/3">
-        <FormInput
-          key={`description${index}`}
-          errors={Boolean(error?.description)}
-          name={"description"}
-          label={"Description"}
-          register={register(`items.${index}.description` as const, {
-            required: true,
-          })}
-        />
-      </div>
-      <div className="field has-addons">
-        <p className="control">
+    <div className="columns">
+      <div className="column">
+        <div className="field">
           <FormInput
-            errors={Boolean(error?.amount)}
-            key={`amount${index}`}
-            label={"Amount"}
-            name={"amount"}
-            register={register(`items.${index}.amount` as const, {
+            key={`description${index}`}
+            errors={Boolean(error?.description)}
+            name={"description"}
+            label={"Description"}
+            register={register(`items.${index}.description` as const, {
               required: true,
             })}
           />
-        </p>
-        <p className="control">
-          <FormSelect
-            errors={Boolean(error?.currency)}
-            key={`currency${index}`}
-            label={"Currency"}
-            name={"currency"}
-            register={register(`items.${index}.currency` as const, {
-              required: true,
-            })}
-            options={selectOptions}
-          />
-        </p>
+        </div>
       </div>
-
-      {!isFirstItem && (
+      <div className="column flex">
+        <div className="field has-addons">
+          <p className="control">
+            <FormInput
+              errors={Boolean(error?.amount)}
+              key={`amount${index}`}
+              label={"Amount"}
+              name={"amount"}
+              register={register(`items.${index}.amount` as const, {
+                required: true,
+              })}
+            />
+          </p>
+          <p className="control">
+            <FormSelect
+              errors={Boolean(error?.currency)}
+              key={`currency${index}`}
+              label={"Currency"}
+              name={"currency"}
+              register={register(`items.${index}.currency` as const, {
+                required: true,
+              })}
+              options={selectOptions}
+            />
+          </p>
+        </div>
+      </div>
+      <div className="column is-narrow">
         <div className="field">
           <label className="label">Remove</label>
           <button
             type="button"
             onClick={removeItemByIndex}
             className="button is-danger"
+            disabled={isFirstItem}
           >
             X
           </button>
         </div>
-      )}
+      </div>
     </div>
   );
 };
